@@ -52,10 +52,10 @@ def Reescale(ScaleFactor, C, N_Full, w_p, f_ext, tau_syn, Inp, InpDC):
 ScaleFactor=0.1  # 1.0 = 80.000 
 
 # External input DC or Poisson
-DC=1#True #True = DC // False = Poisson
+DC=True #True = DC // False = Poisson
 
 # Thalamic input in 4th and 6th layer on or off
-TH=1#False #True = on // False = off
+TH=False #True = on // False = off
 
 # Balanced and Unbalanced external input as PD article
 Balanced=True #True=Balanced // False=Unbalanced
@@ -277,29 +277,29 @@ simConfig.saveJson = True
 
 ##################################################################################
 
-# sim.initialize(
-#     simConfig = simConfig,  
-#     netParams = netParams)          # create network object and set cfg and net params
-# sim.net.createPops()                    # instantiate network populations
-# sim.net.createCells()                   # instantiate network cells based on defined populations
+sim.initialize(
+    simConfig = simConfig,  
+    netParams = netParams)          # create network object and set cfg and net params
+sim.net.createPops()                    # instantiate network populations
+sim.net.createCells()                   # instantiate network cells based on defined populations
 
-# # randomize m parameter of cells
-# rand=h.Random()
-# for c in sim.net.cells:
-# 	rand.Random123(c.gid, simConfig.seeds['m'])
-# 	if c.tags['cellModel'] == 'IntFire_PD':
-# 		c.hPointp.m = rand.normal(-58,10)
+# randomize m parameter of cells
+rand=h.Random()
+for c in sim.net.cells:
+	rand.Random123(c.gid, simConfig.seeds['m'])
+	if c.tags['cellModel'] == 'IntFire_PD':
+		c.hPointp.m = rand.normal(-58,10)
 
-# sim.net.addStims()              # add network stimulation
+sim.net.addStims()              # add network stimulation
 
-# sim.cfg.createPyStruct = 0      # save memory by not saving py data structure for connections
+sim.cfg.createPyStruct = 0      # save memory by not saving py data structure for connections
 
-# sim.net.connectCells()                  # create connections between cells based on params
-# sim.setupRecording()                    # setup variables to record for each cell (spikes, V traces, etc)
-# sim.runSim()                            # run parallel Neuron simulation  
-# sim.gatherData()                        # gather spiking data and cell info from each node
-# sim.saveData()                          # save params, cell info and sim output to file (pickle,mat,txt,etc)#
-# sim.analysis.plotData()               # plot spike raster etc
+sim.net.connectCells()                  # create connections between cells based on params
+sim.setupRecording()                    # setup variables to record for each cell (spikes, V traces, etc)
+sim.runSim()                            # run parallel Neuron simulation  
+sim.gatherData()                        # gather spiking data and cell info from each node
+sim.saveData()                          # save params, cell info and sim output to file (pickle,mat,txt,etc)#
+sim.analysis.plotData()               # plot spike raster etc
 
 
 
