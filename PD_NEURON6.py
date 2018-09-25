@@ -5,7 +5,7 @@ from neuron import h
 from numpy import *
 
 
-simLabel = 'pd_scale-1.0_DC-0_TH-0_Balanced-1_60sec'
+simLabel = 'pd_scale-1.0_DC-0_TH-0_Balanced-1'
 
 ###nr n iv -python PD_NEURON.py
 #nrnivmodl #Compilar .mod
