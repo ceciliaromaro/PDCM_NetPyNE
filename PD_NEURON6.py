@@ -5,6 +5,8 @@ from neuron import h
 from numpy import *
 
 
+simLabel = 'pd_scale-1.0_DC-0_TH-0_Balanced-0'
+
 ###nr n iv -python PD_NEURON.py
 #nrnivmodl #Compilar .mod
 #mpiexec -n 2 nrniv -python -mpi PD_NEURON.py 
@@ -49,16 +51,16 @@ def Reescale(ScaleFactor, C, N_Full, w_p, f_ext, tau_syn, Inp, InpDC):
 ###########################################################
 
 # Size of Network. Adjust this constants, please!
-ScaleFactor=0.1  # 1.0 = 80.000 
+ScaleFactor=1.0  # 1.0 = 80.000 
 
 # External input DC or Poisson
-DC=True #True = DC // False = Poisson
+DC=False #True = DC // False = Poisson
 
 # Thalamic input in 4th and 6th layer on or off
 TH=False #True = on // False = off
 
 # Balanced and Unbalanced external input as PD article
-Balanced=True #True=Balanced // False=Unbalanced
+Balanced=False #True=Balanced // False=Unbalanced
 
 # DC=True ;  TH=False; Balanced=True   => Reproduce Figure 7 A1 and A2
 # DC=False;  TH=False; Balanced=False  => Reproduce Figure 7 B1 and B2
@@ -242,8 +244,10 @@ simConfig.verbose = 0     # Show detailed messages
 #simConfig.analysis['plotTraces'] = {'include':[('L2e', [0, 1, 2, 3]),('L2i', [0, 1])], 'timeRange': [0,100],'overlay': True,'oneFigPer': 'trace', 'showFig':False, 'saveFig': 'traceEscala3'+str(ScaleFactor)+'.png'}
 
 simConfig.recordStep = 0.1         # Step size in ms to save data (e.g. V traces, LFP, etc)
-simConfig.filename = 'model_output'  # Set file output name
+simConfig.filename = simLabel  # Set file output name
 simConfig.savePickle = False         # Save params, network and sim output to pickle file
+simConfig.saveJson = True
+simConfig.printSynsAfterRule = True
 
 ### Testar reducao de consumo memoria
 simConfig.gatherOnlySimData = False #Original
@@ -261,21 +265,18 @@ include = [(pop, list(range(0, netParams.popParams[pop]['numCells'], scale))) fo
 
 #simConfig.analysis['plotRaster']={'include': include, 'timeRange': [100,600], 'popRates' : True , 'orderInverse':True, 'showFig':False, 'saveFig': 'rasterEscala8'+str(ScaleFactor)+'.png'}
 #simConfig.analysis['plotRaster']={'include': include, 'timeRange': [100,600], 'popRates' : False , 'orderInverse':True, 'showFig':False, 'saveFig': 'rasterEscala8'+str(ScaleFactor)+'.png'}
-simConfig.analysis['plotRaster']={'include': include, 'timeRange': [100,600], 'popRates' : False, 'figSize' : (5,10),  'labels':'overlay', 'orderInverse':True, 'showFig':False, 'saveFig': 'rasterEscala_min_'+str(ScaleFactor)+'.png'}
+simConfig.analysis['plotRaster']={'include': include, 'timeRange': [100,600], 'popRates' : False, 'figSize' : (5,10),  'labels':'overlay', 'orderInverse':True, 'showFig':False, 'saveFig': simLabel+'.png'}
 
 ###########################################AQUI######################################################################
 simConfig.analysis['plotSpikeStats'] = {'include' : L, 'stats' : ['rate','isicv', 'sync'], 'timeRange' : [100,600],'showFig':False, 'saveFig': 'rasterEscala8'+str(ScaleFactor)+'.png'}
 simConfig.printPopAvgRates = True
 #####################################################################################################################
 
-simConfig.printSynsAfterRule = True
 
-#para Salvar dados
-#simConfig.saveDataInclude = ['netPops']
-#simConfig.saveMat = True
-simConfig.saveJson = True
 
-##################################################################################
+############################################################
+#                    Create network and run simulation
+############################################################
 
 sim.initialize(
     simConfig = simConfig,  
