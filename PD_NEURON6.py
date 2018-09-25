@@ -5,7 +5,7 @@ from neuron import h
 from numpy import *
 
 
-simLabel = 'pd_scale-1.0_DC-0_TH-0_Balanced-0'
+simLabel = 'pd_scale-1.0_DC-0_TH-0_Balanced-1'
 
 ###nr n iv -python PD_NEURON.py
 #nrnivmodl #Compilar .mod
@@ -60,7 +60,7 @@ DC=False #True = DC // False = Poisson
 TH=False #True = on // False = off
 
 # Balanced and Unbalanced external input as PD article
-Balanced=False #True=Balanced // False=Unbalanced
+Balanced=True #True=Balanced // False=Unbalanced
 
 # DC=True ;  TH=False; Balanced=True   => Reproduce Figure 7 A1 and A2
 # DC=False;  TH=False; Balanced=False  => Reproduce Figure 7 B1 and B2
