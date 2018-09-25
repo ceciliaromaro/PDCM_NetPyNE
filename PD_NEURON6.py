@@ -5,7 +5,7 @@ from neuron import h
 from numpy import *
 
 
-simLabel = 'pd_scale-1.0_DC-0_TH-0_Balanced-1'
+simLabel = 'pd_scale-1.0_DC-0_TH-0_Balanced-1_60sec'
 
 ###nr n iv -python PD_NEURON.py
 #nrnivmodl #Compilar .mod
@@ -235,7 +235,7 @@ netParams.connParams['S2>M'] = {
 ############################################################
 simConfig = specs.SimConfig() # object of class SimConfig to store simulation configuration
 simConfig.seeds['stim']=3
-simConfig.duration = 6*1e2   # Duration of the simulation, in ms
+simConfig.duration = 60*1e3 #6*1e2   # Duration of the simulation, in ms
 simConfig.dt = 0.025          # Internal integration timestep to use
 simConfig.verbose = 0     # Show detailed messages
 
