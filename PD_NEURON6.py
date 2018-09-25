@@ -38,7 +38,7 @@ def Reescale(ScaleFactor, C, N_Full, w_p, f_ext, tau_syn, Inp, InpDC):
 		InpDC=sqrt(ScaleFactor)*InpDC*w_p*f_ext*tau_syn*0.001 #pA
 		w_p=w_p/sqrt(ScaleFactor) #pA
 		InpDC=InpDC+I_ext
-		N_=int32(ScaleFactor*N_Full)
+		N_=int(ScaleFactor*N_Full)
 	else:
 		InpDC=InpDC*w_p*f_ext*tau_syn*0.001
 		N_=N_Full	
@@ -183,7 +183,7 @@ if TH == True:
 	Tth=10 #ms
 	InTH=[0, 0, 93, 84, 0, 0, 47, 34]
 	for r in [2,3,6,7]:
-		nTH=int32(sqrt(ScaleFactor)*InTH[r]*fth*Tth/1000)
+		nTH=int(sqrt(ScaleFactor)*InTH[r]*fth*Tth/1000)
 		netParams.popParams['bkg_TH'+str(L[r])] = {'numCells': N_[r], 'cellModel': 'NetStim','rate': 2*(1000*nTH)/Tth ,  'start': 200.0, 'noise': 1.0, 'number': nTH, 'delay':0}
 		auxConn=array([range(0,N_[r],1),range(0,N_[r],1)])
 		netParams.connParams['bkg_TH->'+str(L[r])] = {
