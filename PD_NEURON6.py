@@ -5,7 +5,7 @@ from neuron import h
 from numpy import *
 
 
-simLabel = 'pd_scale-0.1_DC-0_TH-0_Balanced-0'
+simLabel = 'pd_scale-1.0_DC-0_TH-0_Balanced-0'
 
 ###nr n iv -python PD_NEURON.py
 #nrnivmodl #Compilar .mod
@@ -51,7 +51,7 @@ def Reescale(ScaleFactor, C, N_Full, w_p, f_ext, tau_syn, Inp, InpDC):
 ###########################################################
 
 # Size of Network. Adjust this constants, please!
-ScaleFactor=0.1  # 1.0 = 80.000 
+ScaleFactor=1.0  # 1.0 = 80.000 
 
 # External input DC or Poisson
 DC=False #True = DC // False = Poisson
