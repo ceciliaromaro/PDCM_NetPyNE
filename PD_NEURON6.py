@@ -14,7 +14,10 @@ simLabel = 'pd_scale-1.0_DC-0_TH-0_Balanced-1'
 #from xxx import Reescale
 def Reescale(ScaleFactor, C, N_Full, w_p, f_ext, tau_syn, Inp, InpDC):
 	if ScaleFactor<1.0 : 
-		F_out=array([0.971, 2.868, 4.746, 5.396, 8.142, 9.078, 0.991, 7.523])
+		# 1
+		F_out=array([0.860, 2.600, 4.306, 5.396, 8.142, 8.188, 0.941, 7.3]) #Good approximation
+		#F_out=array([0.971, 2.868, 4.746, 5.396, 8.142, 9.078, 0.991, 7.523])
+		
 		#Para a nao balanceada o F_out deve ser outro. O nao balanceado. Apos corrigir conexoes testar para caso so de aleracao no InpPoiss
 		Ncon=vstack(column_stack(0 for i in range(0,8)) for i in range(0,8))
 		for r in range(0,8): 
@@ -174,7 +177,8 @@ if DC == False: # External Input as Poisson
 		netParams.connParams['poiss->'+str(L[r])] = {
 			'preConds': {'pop': 'poiss'+str(L[r])},  'postConds': {'pop': L[r]},
 			'connList': auxConn.T,   
-			'weight':'max(0, weightMin +normal(0,dweight*weightMin))',  'delay': netParams.delayMin_e} 
+			'weight':'max(0, weightMin +normal(0,dweight*weightMin))',  'delay': 0.5} 
+			# 1 delay
 			
 # Thalamus Input: increased of 15Hz that lasts 10 ms
 # 0.15 fires in 10 ms each 902 cells -> number of spikes = T*f*N_ = 0.15*902 -> 1 spike each N_*0.15
@@ -189,8 +193,8 @@ if TH == True:
 		netParams.connParams['bkg_TH->'+str(L[r])] = {
 			'preConds': {'pop': 'bkg_TH'+str(L[r])},  'postConds': {'pop': L[r]},
 			'connList': auxConn.T,   
-			'weight':'max(0, weightMin +normal(0,dweight*weightMin))',  'delay': netParams.delayMin_e} 
-		
+			'weight':'max(0, weightMin +normal(0,dweight*weightMin))',  'delay': 0.5} 
+		# 1 delay
 
 
 ## Cell connectivity rules
@@ -228,7 +232,8 @@ for r in range(0,8):
         
 netParams.connParams['S2>M'] = {
 	'preConds': {'pop': 'bkg_IF'}, 'postConds': {'cellModel': 'IntFire_PD'},
-	'probability': 1, 'weight':0,	'delay':netParams.delayMin_e}   #w=80 		
+	'probability': 1, 'weight':0,	'delay': 0.5}   #w=80 	
+# 1 delay
 
 ############################################################
 #                    Simulation options and plots
@@ -260,15 +265,23 @@ simConfig.saveCellConns=False
 simConfig.seeds['m'] = 123
 
 #'include': ['all']
-scale = 10
+# 1 Print just 1862 neurons
+scale = max(1,int(41.444*ScaleFactor))
 include = [(pop, list(range(0, netParams.popParams[pop]['numCells'], scale))) for pop in L]
 
 #simConfig.analysis['plotRaster']={'include': include, 'timeRange': [100,600], 'popRates' : True , 'orderInverse':True, 'showFig':False, 'saveFig': 'rasterEscala8'+str(ScaleFactor)+'.png'}
 #simConfig.analysis['plotRaster']={'include': include, 'timeRange': [100,600], 'popRates' : False , 'orderInverse':True, 'showFig':False, 'saveFig': 'rasterEscala8'+str(ScaleFactor)+'.png'}
-simConfig.analysis['plotRaster']={'include': include, 'timeRange': [100,600], 'popRates' : False, 'figSize' : (5,10),  'labels':'overlay', 'orderInverse':True, 'showFig':False, 'saveFig': simLabel+'.png'}
+simConfig.analysis['plotRaster']={'include': include, 'timeRange': [100,500], 'popRates' : False, 'figSize' : (5,9),  'labels':'overlay', 'orderInverse':True, 'showFig':False, 'saveFig': simLabel+'.png'}
+# 1 timeRange and figSize
+
 
 ###########################################AQUI######################################################################
-simConfig.analysis['plotSpikeStats'] = {'include' : L, 'stats' : ['rate','isicv', 'sync'], 'timeRange' : [100,600],'showFig':False, 'saveFig': 'rasterEscala8'+str(ScaleFactor)+'.png'}
+# 1 Print statistics of 1000 neurons
+scale1000 = max(1,int(sum(N_[:8])/1000))
+include1000 = [(pop, range(0, netParams.popParams[pop]['numCells'], scale1000)) for pop in L]
+simConfig.analysis['plotSpikeStats'] = {'include' : include1000, 'legendLabels':['L6i', 'L6e', 'L5i', 'L5e', 'L4i', 'L4e', 'L2i','L2e'], 'stats' : ['rate','isicv', 'sync'], 'timeRange' : [100,60000], 'figSize': (6,3),'showFig':False, 'saveFig': 'Statistics_1000_AC_'+str(ScaleFactor)+'.png'}
+
+#simConfig.analysis['plotSpikeStats'] = {'include' : L, 'stats' : ['rate','isicv', 'sync'], 'timeRange' : [100,600],'showFig':False, 'saveFig': 'rasterEscala8'+str(ScaleFactor)+'.png'}
 simConfig.printPopAvgRates = True
 #####################################################################################################################
 
