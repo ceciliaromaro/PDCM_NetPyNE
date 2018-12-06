@@ -41,7 +41,7 @@ def Reescale(ScaleFactor, C, N_Full, w_p, f_ext, tau_syn, Inp, InpDC):
 		InpDC=sqrt(ScaleFactor)*InpDC*w_p*f_ext*tau_syn*0.001 #pA
 		w_p=w_p/sqrt(ScaleFactor) #pA
 		InpDC=InpDC+I_ext
-		N_=int(ScaleFactor*N_Full)
+		N_=[int(ScaleFactor*N) for N in N_Full]
 	else:
 		InpDC=InpDC*w_p*f_ext*tau_syn*0.001
 		N_=N_Full	
@@ -54,7 +54,7 @@ def Reescale(ScaleFactor, C, N_Full, w_p, f_ext, tau_syn, Inp, InpDC):
 ###########################################################
 
 # Size of Network. Adjust this constants, please!
-ScaleFactor=1.0  # 1.0 = 80.000 
+ScaleFactor=0.02  # 1.0 = 80.000 
 
 # External input DC or Poisson
 DC=False #True = DC // False = Poisson
@@ -285,6 +285,8 @@ simConfig.analysis['plotSpikeStats'] = {'include' : include1000, 'legendLabels':
 simConfig.printPopAvgRates = True
 #####################################################################################################################
 
+simConfig.recordCellsSpikes = ['L2e', 'L2i', 'L4e', 'L4i', 'L5e', 'L5i','L6e', 'L6i']
+simConfig.createPyStruct = 0      # save memory by not saving py data structure for connections
 
 
 ############################################################
@@ -306,7 +308,6 @@ for c in sim.net.cells:
 
 sim.net.addStims()              # add network stimulation
 
-sim.cfg.createPyStruct = 0      # save memory by not saving py data structure for connections
 
 sim.net.connectCells()                  # create connections between cells based on params
 sim.setupRecording()                    # setup variables to record for each cell (spikes, V traces, etc)
