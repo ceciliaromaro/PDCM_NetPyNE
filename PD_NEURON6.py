@@ -54,7 +54,7 @@ def Reescale(ScaleFactor, C, N_Full, w_p, f_ext, tau_syn, Inp, InpDC):
 ###########################################################
 
 # Size of Network. Adjust this constants, please!
-ScaleFactor=0.02  # 1.0 = 80.000 
+ScaleFactor=0.1  # 1.0 = 80.000 
 
 # External input DC or Poisson
 DC=False #True = DC // False = Poisson
@@ -240,7 +240,7 @@ netParams.connParams['S2>M'] = {
 ############################################################
 simConfig = specs.SimConfig() # object of class SimConfig to store simulation configuration
 simConfig.seeds['stim']=3
-simConfig.duration = 60*1e3 #6*1e2   # Duration of the simulation, in ms
+simConfig.duration = 1*1e3 #6*1e2   # Duration of the simulation, in ms
 simConfig.dt = 0.025          # Internal integration timestep to use
 simConfig.verbose = 0     # Show detailed messages
 
@@ -285,7 +285,7 @@ simConfig.analysis['plotSpikeStats'] = {'include' : include1000, 'legendLabels':
 simConfig.printPopAvgRates = True
 #####################################################################################################################
 
-simConfig.recordCellsSpikes = ['L2e', 'L2i', 'L4e', 'L4i', 'L5e', 'L5i','L6e', 'L6i']
+#simConfig.recordCellsSpikes = ['L2e', 'L2i', 'L4e', 'L4i', 'L5e', 'L5i','L6e', 'L6i']
 simConfig.createPyStruct = 0      # save memory by not saving py data structure for connections
 
 
