@@ -45,7 +45,7 @@ cfg.createPyStruct = 0      # save memory by not saving py data structure for co
 # DC=False ; TH=True;  Balanced=True   => Figure 10A. But I want a partial reproduce so I guess Figure 10C is not necessary
 
 # Size of Network. Adjust this constants, please!
-cfg.ScaleFactor=0.1  # 1.0 = 80.000 
+cfg.ScaleFactor=0.05  # 1.0 = 80.000 
 
 # External input DC or Poisson
 cfg.DC=False #True = DC // False = Poisson
@@ -69,7 +69,7 @@ cfg.savePickle = True         # Save params, network and sim output to pickle fi
 cfg.saveJson = False
 cfg.recordStim = False
 cfg.printSynsAfterRule = True
-cfg.recordCellsSpikes = ['L2e', 'L2i', 'L4e', 'L4i', 'L5e', 'L5i','L6e', 'L6i'] # record only spikes of cells (not ext stims)
+#cfg.recordCellsSpikes = ['L2e', 'L2i', 'L4e', 'L4i', 'L5e', 'L5i','L6e', 'L6i'] # record only spikes of cells (not ext stims)
 
 # raster plot (include update in netParams.py)
 cfg.analysis['plotRaster']={'include': [], 'timeRange': [100,cfg.duration], 'popRates' : False, 'figSize' : (6,9),  

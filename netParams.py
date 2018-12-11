@@ -157,8 +157,7 @@ if cfg.DC == False: # External Input as Poisson
 		netParams.connParams['poiss->'+str(L[r])] = {
 			'preConds': {'pop': 'poiss'+str(L[r])},  'postConds': {'pop': L[r]},
 			'connList': auxConn.T,   
-			'weight':'max(0, weightMin +normal(0,dweight*weightMin))',  'delay': 0.5} 
-			# 1 delay
+			'weight':'max(0, weightMin +normal(0,dweight*weightMin))',  'delay': 0.5} # 1 delay
 			
 # Thalamus Input: increased of 15Hz that lasts 10 ms
 # 0.15 fires in 10 ms each 902 cells -> number of spikes = T*f*N_ = 0.15*902 -> 1 spike each N_*0.15
@@ -173,8 +172,7 @@ if cfg.TH == True:
 		netParams.connParams['bkg_TH->'+str(L[r])] = {
 			'preConds': {'pop': 'bkg_TH'+str(L[r])},  'postConds': {'pop': L[r]},
 			'connList': auxConn.T,   
-			'weight':'max(0, weightMin +normal(0,dweight*weightMin))',  'delay': 0.5} 
-		# 1 delay
+			'weight':'max(0, weightMin +normal(0,dweight*weightMin))',  'delay': 0.5} # 1 delay
 
 
 ############################################################
