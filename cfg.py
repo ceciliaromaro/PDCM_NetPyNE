@@ -68,16 +68,16 @@ cfg.saveFolder = 'data/'
 cfg.savePickle = True         # Save params, network and sim output to pickle file
 cfg.saveJson = False
 cfg.recordStim = False
-cfg.printSynsAfterRule = True
-#cfg.recordCellsSpikes = ['L2e', 'L2i', 'L4e', 'L4i', 'L5e', 'L5i','L6e', 'L6i'] # record only spikes of cells (not ext stims)
+# cfg.printSynsAfterRule = True
+# cfg.recordCellsSpikes = ['L2e', 'L2i', 'L4e', 'L4i', 'L5e', 'L5i','L6e', 'L6i'] # record only spikes of cells (not ext stims)
 
 # raster plot (include update in netParams.py)
 cfg.analysis['plotRaster']={'include': [], 'timeRange': [100,cfg.duration], 'popRates' : False, 'figSize' : (6,9),  
-	'labels':'overlay', 'orderInverse':True, 'showFig':False, 'saveFig': cfg.simLabel+'.png'}
+	'labels':'overlay', 'orderInverse':True, 'showFig':False, 'saveFig': True}
 
 # statistics plot (include update in netParams.py)
 cfg.analysis['plotSpikeStats'] = {'include' : [], 'legendLabels':['L6i', 'L6e', 'L5i', 'L5e', 'L4i', 'L4e', 'L2i','L2e'], 'stats' : ['rate','isicv', 'sync'], 
-	'timeRange' : [100,60000], 'figSize': (6,3),'showFig':False, 'saveFig': 'Statistics_1000_AC_'+str(cfg.ScaleFactor)+'.png'}
+	'timeRange' : [100,cfg.duration], 'figSize': (6,3),'showFig':False, 'saveFig': True}
 
 # plot traces
 #cfg.recordTraces = {'m': {'var': 'm', 'conds':{'pop': ['L2e', 'L2i']}}}
