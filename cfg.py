@@ -20,8 +20,6 @@ cfg = specs.SimConfig() # object of class SimConfig to store simulation configur
 # Run options
 ############################################################
 
-cfg.simLabel = 'pd_scale-1.0_DC-0_TH-0_Balanced-1'
-
 cfg.seeds['stim']=3
 cfg.duration = 1*1e3 #6*1e2   # Duration of the simulation, in ms
 cfg.dt = 0.025          # Internal integration timestep to use
@@ -58,6 +56,7 @@ cfg.TH=False #True = on // False = off
 # Balanced and Unbalanced external input as PD article
 cfg.Balanced=True #True=Balanced // False=Unbalanced
 
+cfg.simLabel = 'pd_scale-%s_DC-%d_TH-%d_Balanced-%d'%(str(cfg.ScaleFactor), int(cfg.DC), int(cfg.TH), int(cfg.Balanced))
 
 ###########################################################
 # Recording and plotting options
@@ -65,6 +64,7 @@ cfg.Balanced=True #True=Balanced // False=Unbalanced
 
 cfg.recordStep = 0.1         # Step size in ms to save data (e.g. V traces, LFP, etc)
 cfg.filename = cfg.simLabel  # Set file output name
+cfg.saveFolder = 'data/'
 cfg.savePickle = True         # Save params, network and sim output to pickle file
 cfg.saveJson = False
 cfg.recordStim = False
@@ -72,7 +72,7 @@ cfg.printSynsAfterRule = True
 cfg.recordCellsSpikes = ['L2e', 'L2i', 'L4e', 'L4i', 'L5e', 'L5i','L6e', 'L6i'] # record only spikes of cells (not ext stims)
 
 # raster plot (include update in netParams.py)
-cfg.analysis['plotRaster']={'include': [], 'timeRange': [100,cfg.duration], 'popRates' : False, 'figSize' : (5,9),  
+cfg.analysis['plotRaster']={'include': [], 'timeRange': [100,cfg.duration], 'popRates' : False, 'figSize' : (6,9),  
 	'labels':'overlay', 'orderInverse':True, 'showFig':False, 'saveFig': cfg.simLabel+'.png'}
 
 # statistics plot (include update in netParams.py)

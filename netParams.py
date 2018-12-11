@@ -33,7 +33,7 @@ def Reescale(ScaleFactor, C, N_Full, w_p, f_ext, tau_syn, Inp, InpDC):
 		w[0][2]=2.0*w[0][2]
 
 		x1_all = w * Ncon * F_out
-		x1_sum = sum(x1_all, axis=1)
+		x1_sum = np.sum(x1_all, axis=1)
 		x1_ext = w_p * Inp * f_ext
 		I_ext=np.column_stack(0 for i in range(0,8))
 		I_ext = 0.001 * tau_syn * (
