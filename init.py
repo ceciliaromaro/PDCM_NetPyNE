@@ -29,11 +29,11 @@ sim.net.createPops()                    # instantiate network populations
 sim.net.createCells()                   # instantiate network cells based on defined populations
 
 # randomize m parameter of cells
-# rand=h.Random()
-# for c in sim.net.cells:
-# 	if c.tags['cellModel'] == 'IntFire_PD':
-# 		rand.Random123(c.gid, cfg.seeds['m'])
-# 		c.hPointp.m = rand.normal(-58,10)
+rand=h.Random()
+for c in sim.net.cells:
+	if c.tags['cellModel'] == 'IntFire_PD':
+		rand.Random123(c.gid, cfg.seeds['m'])
+		c.hPointp.m = rand.normal(-58,10)
 
 sim.net.addStims()              # add network stimulation
 sim.net.connectCells()                  # create connections between cells based on params
@@ -41,7 +41,7 @@ sim.setupRecording()                    # setup variables to record for each cel
 sim.runSim()                            # run parallel Neuron simulation  
 sim.gatherData()                        # gather spiking data and cell info from each node
 sim.saveData()                          # save params, cell info and sim output to file (pickle,mat,txt,etc)#
-#sim.analysis.plotData()               # plot spike raster etc
+sim.analysis.plotData()               # plot spike raster etc
 
 
 

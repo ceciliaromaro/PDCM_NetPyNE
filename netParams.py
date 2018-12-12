@@ -149,15 +149,20 @@ netParams.popParams['bkg_IF'] = {'numCells': 1, 'cellModel': 'NetStim','rate': 4
 if cfg.DC == False: # External Input as Poisson
 	for r in range(0,8):
 		netParams.popParams['poiss'+str(L[r])] = {
-						'numCells': N_[r], 'cellModel': 'NetStim',
+						'numCells': N_[r], 
+						'cellModel': 'NetStim',
 						'rate': InpPoiss[r]*f_ext,   
-						'start':0.0, 'noise': 1.0, 'delay':0}
+						'start': 0.0, 
+						'noise': 1.0, 
+						'delay': 0}
 		
 		auxConn=np.array([range(0,N_[r],1),range(0,N_[r],1)])
 		netParams.connParams['poiss->'+str(L[r])] = {
-			'preConds': {'pop': 'poiss'+str(L[r])},  'postConds': {'pop': L[r]},
+			'preConds': {'pop': 'poiss'+str(L[r])},  
+			'postConds': {'pop': L[r]},
 			'connList': auxConn.T,   
-			'weight':'max(0, weightMin +normal(0,dweight*weightMin))',  'delay': 0.5} # 1 delay
+			'weight': 'max(0, weightMin+normal(0,dweight*weightMin))',  
+			'delay': 0.5} # 1 delay
 			
 # Thalamus Input: increased of 15Hz that lasts 10 ms
 # 0.15 fires in 10 ms each 902 cells -> number of spikes = T*f*N_ = 0.15*902 -> 1 spike each N_*0.15
@@ -170,9 +175,11 @@ if cfg.TH == True:
 		netParams.popParams['bkg_TH'+str(L[r])] = {'numCells': N_[r], 'cellModel': 'NetStim','rate': 2*(1000*nTH)/Tth ,  'start': 200.0, 'noise': 1.0, 'number': nTH, 'delay':0}
 		auxConn=np.array([range(0,N_[r],1),range(0,N_[r],1)])
 		netParams.connParams['bkg_TH->'+str(L[r])] = {
-			'preConds': {'pop': 'bkg_TH'+str(L[r])},  'postConds': {'pop': L[r]},
+			'preConds': {'pop': 'bkg_TH'+str(L[r])},  
+			'postConds': {'pop': L[r]},
 			'connList': auxConn.T,   
-			'weight':'max(0, weightMin +normal(0,dweight*weightMin))',  'delay': 0.5} # 1 delay
+			'weight':'max(0, weightMin +normal(0,dweight*weightMin))',  
+			'delay': 0.5} # 1 delay
 
 
 ############################################################
