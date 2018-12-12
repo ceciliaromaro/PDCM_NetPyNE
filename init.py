@@ -11,8 +11,9 @@ to run on multiple cores:
 	mpiexec -n 2 nrniv -python -mpi init.py 
 '''
 
+import matplotlib; matplotlib.use('Agg')  # to avoid graphics error in servers
 
-from netpyne import specs, sim
+from netpyne import sim
 from neuron import h
 from cfg import cfg
 from netParams import netParams

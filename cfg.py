@@ -45,18 +45,18 @@ cfg.createPyStruct = 0      # save memory by not saving py data structure for co
 # DC=False ; TH=True;  Balanced=True   => Figure 10A. But I want a partial reproduce so I guess Figure 10C is not necessary
 
 # Size of Network. Adjust this constants, please!
-cfg.ScaleFactor=0.1  # 1.0 = 80.000 
+cfg.ScaleFactor = 0.1  # 1.0 = 80.000 
 
 # External input DC or Poisson
-cfg.DC=False #True = DC // False = Poisson
+cfg.DC = False #True = DC // False = Poisson
 
 # Thalamic input in 4th and 6th layer on or off
-cfg.TH=False #True = on // False = off
+cfg.TH = False #True = on // False = off
 
 # Balanced and Unbalanced external input as PD article
-cfg.Balanced=True #True=Balanced // False=Unbalanced
+cfg.Balanced = True #True=Balanced // False=Unbalanced
 
-cfg.simLabel = 'pd_scale-%s_DC-%d_TH-%d_Balanced-%d'%(str(cfg.ScaleFactor), int(cfg.DC), int(cfg.TH), int(cfg.Balanced))
+cfg.simLabel = 'pd_scale-%s_DC-%d_TH-%d_Balanced-%d_dur-%d'%(str(cfg.ScaleFactor), int(cfg.DC), int(cfg.TH), int(cfg.Balanced), int(cfg.duration/1e3))
 
 ###########################################################
 # Recording and plotting options
@@ -68,7 +68,7 @@ cfg.saveFolder = 'data/'
 cfg.savePickle = True         # Save params, network and sim output to pickle file
 cfg.saveJson = False
 cfg.recordStim = False
-cfg.printSynsAfterRule = True
+cfg.printSynsAfterRule = False
 cfg.recordCellsSpikes = ['L2e', 'L2i', 'L4e', 'L4i', 'L5e', 'L5i','L6e', 'L6i'] # record only spikes of cells (not ext stims)
 
 # raster plot (include update in netParams.py)
