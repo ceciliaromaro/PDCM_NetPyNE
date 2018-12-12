@@ -12,6 +12,6 @@
 
 source ~/.bashrc
 cd /home/salvadord/pd
-mpirun -np 256 nrniv -python -mpi PD_NEURON6.py
+mpirun -np 256 nrniv -python -mpi init.py
 wait
                             
