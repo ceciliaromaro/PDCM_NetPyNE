@@ -4,8 +4,8 @@
 #SBATCH -t 60:00:00
 #SBATCH --nodes=16
 #SBATCH --ntasks-per-node=16
-#SBATCH -o /home/salvadord/pd/data/pd_scale-0.1_DC-0_TH-0_Balanced-1_60sec.run
-#SBATCH -e /home/salvadord/pd/data/pd_scale-0.1_DC-0_TH-0_Balanced-1_60sec.err
+#SBATCH -o /home/salvadord/pd/data/pd_scale-1.0_DC-0_TH-0_Balanced-1_1sec.run
+#SBATCH -e /home/salvadord/pd/data/pd_scale-1.0_DC-0_TH-0_Balanced-1_1sec.err
 #SBATCH --mail-user=salvadordura@gmail.com
 #SBATCH --mail-type=end
 #SBATCH --exclude=compute[17-64000]
