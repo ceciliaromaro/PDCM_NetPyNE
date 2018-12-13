@@ -147,7 +147,7 @@ netParams.popParams['bkg_IF'] = {'numCells': 1, 'cellModel': 'NetStim','rate': 4
 ############################################################
 
 if cfg.DC == False: # External Input as Poisson
-	for r in range(0,8):
+	for r in range(0,4):
 		netParams.popParams['poiss'+str(L[r])] = {
 						'numCells': N_[r], 
 						'cellModel': 'NetStim',
