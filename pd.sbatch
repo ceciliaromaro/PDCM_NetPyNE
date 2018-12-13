@@ -2,8 +2,8 @@
 #SBATCH --job-name=pd
 #SBATCH -A default
 #SBATCH -t 60:00:00
-#SBATCH --nodes=8
-#SBATCH --ntasks-per-node=16
+#SBATCH --nodes=16
+#SBATCH --ntasks-per-node=32
 #SBATCH -o /home/salvadord/pd/data/pd_scale-1.0_DC-0_TH-0_Balanced-1_1sec.run
 #SBATCH -e /home/salvadord/pd/data/pd_scale-1.0_DC-0_TH-0_Balanced-1_1sec.err
 #SBATCH --mail-user=salvadordura@gmail.com
@@ -12,6 +12,6 @@
 
 source ~/.bashrc
 cd /home/salvadord/pd
-mpirun -np 128 nrniv -python -mpi init.py
+mpirun -np 512 nrniv -python -mpi init.py
 wait
                             
