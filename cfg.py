@@ -49,7 +49,7 @@ cfg.createPyStruct = False      # save memory by not saving py data structure fo
 cfg.ScaleFactor = 1.0  # 1.0 = 80.000 
 
 # External input DC or Poisson
-cfg.DC = False #True = DC // False = Poisson
+cfg.DC = True #True = DC // False = Poisson
 
 # Thalamic input in 4th and 6th layer on or off
 cfg.TH = False #True = on // False = off
