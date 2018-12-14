@@ -46,7 +46,7 @@ cfg.createPyStruct = False      # save memory by not saving py data structure fo
 # DC=False ; TH=True;  Balanced=True   => Figure 10A. But I want a partial reproduce so I guess Figure 10C is not necessary
 
 # Size of Network. Adjust this constants, please!
-cfg.ScaleFactor = 1.0  # 1.0 = 80.000 
+cfg.ScaleFactor = 60.0  # 1.0 = 80.000 
 
 # External input DC or Poisson
 cfg.DC = False #True = DC // False = Poisson
