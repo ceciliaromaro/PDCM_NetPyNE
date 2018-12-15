@@ -8,7 +8,7 @@
 #SBATCH -e /home/salvadord/pd/data/pd_scale-1.0_DC-0_TH-0_Balanced-0_1sec_128.err
 #SBATCH --mail-user=salvadordura@gmail.com
 #SBATCH --mail-type=end
-#SBATCH --exclude=compute[17-64000]
+#SBATCH --exclude=compute[3-64000]
 
 source ~/.bashrc
 cd /home/salvadord/pd
