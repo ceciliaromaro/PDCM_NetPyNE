@@ -21,7 +21,7 @@ cfg = specs.SimConfig() # object of class SimConfig to store simulation configur
 ############################################################
 
 cfg.seeds['stim']=3
-cfg.duration = 60*1e3 #6*1e2   # Duration of the simulation, in ms
+cfg.duration = 1*1e3 #6*1e2   # Duration of the simulation, in ms
 cfg.dt = 0.025          # Internal integration timestep to use
 cfg.verbose = 0     # Show detailed messages
 cfg.seeds['m'] = 123
@@ -55,7 +55,7 @@ cfg.DC = False #True = DC // False = Poisson
 cfg.TH = False #True = on // False = off
 
 # Balanced and Unbalanced external input as PD article
-cfg.Balanced = True #True=Balanced // False=Unbalanced
+cfg.Balanced = False #True=Balanced // False=Unbalanced
 
 cfg.simLabel = 'pd_scale-%s_DC-%d_TH-%d_Balanced-%d_dur-%d'%(str(cfg.ScaleFactor), int(cfg.DC), int(cfg.TH), int(cfg.Balanced), int(cfg.duration/1e3))
 
