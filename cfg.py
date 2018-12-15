@@ -21,7 +21,7 @@ cfg = specs.SimConfig() # object of class SimConfig to store simulation configur
 ############################################################
 
 cfg.seeds['stim']=3
-cfg.duration = 1*1e3 #6*1e2   # Duration of the simulation, in ms
+cfg.duration = 60*1e3 #6*1e2   # Duration of the simulation, in ms
 cfg.dt = 0.025          # Internal integration timestep to use
 cfg.verbose = 0     # Show detailed messages
 cfg.seeds['m'] = 123
@@ -49,7 +49,7 @@ cfg.createPyStruct = False      # save memory by not saving py data structure fo
 cfg.ScaleFactor = 1.0  # 1.0 = 80.000 
 
 # External input DC or Poisson
-cfg.DC = True #True = DC // False = Poisson
+cfg.DC = False #True = DC // False = Poisson
 
 # Thalamic input in 4th and 6th layer on or off
 cfg.TH = False #True = on // False = off
