@@ -45,5 +45,3 @@ sim.saveData()                          # save params, cell info and sim output 
 sim.analysis.plotData()               # plot spike raster etc
 
 
-
-

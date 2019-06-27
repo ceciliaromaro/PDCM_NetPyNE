@@ -73,12 +73,12 @@ cfg.printSynsAfterRule = False
 cfg.recordCellsSpikes = ['L2e', 'L2i', 'L4e', 'L4i', 'L5e', 'L5i','L6e', 'L6i'] # record only spikes of cells (not ext stims)
 
 # raster plot (include update in netParams.py)
-cfg.analysis['plotRaster']={'include': [], 'timeRange': [100,cfg.duration], 'popRates' : False, 'figSize' : (6,9),  
-	'labels':'overlay', 'orderInverse':True, 'showFig':False, 'saveFig': True}
+cfg.analysis['plotRaster']={'include': [], 'timeRange': [100,600], 'popRates' : False, 'figSize' : (6,7),  
+	'labels':'overlay', 'orderInverse': True, 'fontSize':16, 'showFig':False, 'saveFig': True}
 
 # statistics plot (include update in netParams.py)
-cfg.analysis['plotSpikeStats'] = {'include' : [], 'legendLabels':['L6i', 'L6e', 'L5i', 'L5e', 'L4i', 'L4e', 'L2i','L2e'], 'stats' : ['rate','isicv', 'sync'], 
-	'timeRange' : [100,cfg.duration], 'figSize': (6,3),'showFig':False, 'saveFig': True}
+cfg.analysis['plotSpikeStats'] = {'include' : [], 'stats' : ['rate'], 'legendLabels':cfg.recordCellsSpikes,
+	'timeRange' : [100,600], 'fontSize': 16, 'figSize': (6,9),'showFig':False, 'saveFig': True}
 
 # plot traces
 #cfg.recordTraces = {'m': {'var': 'm', 'conds':{'pop': ['L2e', 'L2i']}}}

@@ -226,13 +226,13 @@ netParams.connParams['S2->M'] = {
 # Update cfg plotting options based on network rescaling
 ############################################################
 
-# raster just 1862 neurons
-scale = max(1,int(41.444*cfg.ScaleFactor))
+# raster 10% of cells
+scale = 10 #max(1,int(41.444*cfg.ScaleFactor))
 include = [(pop, list(range(0, netParams.popParams[pop]['numCells'], scale))) for pop in L]
 cfg.analysis['plotRaster']['include'] = include
 
-# plot statistics of 1000 neurons
-scale1000 = max(1,int(sum(N_[:8])/1000))
-include1000 = [(pop, range(0, netParams.popParams[pop]['numCells'], scale1000)) for pop in L]
-cfg.analysis['plotSpikeStats']['include'] = include1000
+# plot statistics for 10% of cells
+scale = 10 #max(1,int(sum(N_[:8])/1000))
+include = [(pop, range(0, netParams.popParams[pop]['numCells'], scale)) for pop in L]
+cfg.analysis['plotSpikeStats']['include'] = include
 
