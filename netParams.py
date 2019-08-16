@@ -235,4 +235,6 @@ cfg.analysis['plotRaster']['include'] = include
 scale = 10 #max(1,int(sum(N_[:8])/1000))
 include = [(pop, range(0, netParams.popParams[pop]['numCells'], scale)) for pop in L]
 cfg.analysis['plotSpikeStats']['include'] = include
+cfg.analysis['plotSpikeStats']['include'].reverse()
+cfg.analysis['plotSpikeStats']['legendLabels'].reverse()
 
