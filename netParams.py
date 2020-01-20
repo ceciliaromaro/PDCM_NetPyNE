@@ -102,7 +102,6 @@ Inp=np.array([1600, 1500, 2100, 1900, 2000, 1900, 2900, 2100])
 if cfg.Balanced == False:
 	InpUnb=np.array([2000, 1850, 2000, 1850, 2000, 1850, 2000, 1850])
 
-
 ###########################################################
 # Reescaling calculation
 ###########################################################
@@ -135,8 +134,18 @@ netParams.dweight = 0.1
 # Populations parameters
 ############################################################
 
+# population locations
+# from Schmidt et al 2018, PLoS Comp Bio, Macaque V1
+netParams.sizeX = 300 # x-dimension (horizontal length) size in um
+netParams.sizeY = 1470 # y-dimension (vertical height or cortical depth) size in um
+netParams.sizeZ = 300 # z-dimension (horizontal depth) size in um
+netParams.shape = 'cylinder' # cylindrical (column-like) volume
+
+popDepths = [[0.08, 0.27], [0.08, 0.27], [0.27, 0.58], [0.27, 0.58], [0.58, 0.73], [0.58, 0.73], [0.73, 1.0], [0.73, 1.0]]
+
+# create populations
 for i in range(0,8):
-	netParams.popParams[L[i]] = {'cellType': str(L[i]), 'numCells': int(N_[i]), 'cellModel': 'IntFire_PD', 'm':0, 'Iext':float(InpDC[i])}
+	netParams.popParams[L[i]] = {'cellType': str(L[i]), 'numCells': int(N_[i]), 'cellModel': 'IntFire_PD', 'm':0, 'Iext':float(InpDC[i]), 'ynormRange': popDepths[i] }
 
 # To atualization of Point Neurons
 netParams.popParams['bkg_IF'] = {'numCells': 1, 'cellModel': 'NetStim','rate': 40000,  'start':0.0, 'noise': 0.0, 'delay':0}
@@ -235,6 +244,6 @@ cfg.analysis['plotRaster']['include'] = include
 scale = 10 #max(1,int(sum(N_[:8])/1000))
 include = [(pop, range(0, netParams.popParams[pop]['numCells'], scale)) for pop in L]
 cfg.analysis['plotSpikeStats']['include'] = include
-cfg.analysis['plotSpikeStats']['include'].reverse()
-cfg.analysis['plotSpikeStats']['legendLabels'].reverse()
+#cfg.analysis['plotSpikeStats']['include'].reverse()
+#cfg.analysis['plotSpikeStats']['legendLabels'].reverse()
 

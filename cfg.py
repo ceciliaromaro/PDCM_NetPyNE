@@ -29,10 +29,12 @@ cfg.printPopAvgRates = True
 cfg.printRunTime = 1
 
 ### Options to save memory in large-scale ismulations
-cfg.gatherOnlySimData = False #Original
-cfg.saveCellSecs=False
-cfg.saveCellConns=False
-cfg.createPyStruct = False      # save memory by not saving py data structure for connections
+cfg.gatherOnlySimData = False  #Original
+
+# set the following 3 options to False when running large-scale versions of the model (>50% scale) to save memory
+cfg.saveCellSecs = True 
+cfg.saveCellConns = True
+cfg.createPyStruct = True     
 
 
 ###########################################################
@@ -46,7 +48,7 @@ cfg.createPyStruct = False      # save memory by not saving py data structure fo
 # DC=False ; TH=True;  Balanced=True   => Figure 10A. But I want a partial reproduce so I guess Figure 10C is not necessary
 
 # Size of Network. Adjust this constants, please!
-cfg.ScaleFactor = 0.05  # 1.0 = 80.000 
+cfg.ScaleFactor = 0.10  # 1.0 = 80.000 
 
 # External input DC or Poisson
 cfg.DC = False #True = DC // False = Poisson
@@ -80,9 +82,21 @@ cfg.analysis['plotRaster']={'include': [], 'timeRange': [100,600], 'popRates' : 
 cfg.analysis['plotSpikeStats'] = {'include' : [], 'stats' : ['rate'], 'legendLabels':cfg.recordCellsSpikes,
 	'timeRange' : [100,600], 'fontSize': 16, 'figSize': (6,9),'showFig':False, 'saveFig': True}
 
+## Additional NetPyNE analysis
 # plot traces
 #cfg.recordTraces = {'m': {'var': 'm', 'conds':{'pop': ['L2e', 'L2i']}}}
 #cfg.analysis['plotTraces'] = {'include':[('L2e', [0, 1, 2, 3]),('L2i', [0, 1])], 'timeRange': [0,100],'overlay': True,'oneFigPer': 'trace', 'showFig':False, 'saveFig': 'traceEscala3'+str(ScaleFactor)+'.png'}
 
+# plot 2D net structure
+# cfg.analysis['plot2Dnet'] = {'include': cfg.recordCellsSpikes, 'saveFig': True,  'figSize': (10,15)}
 
+# plot convergence connectivity as 2D 
+# cfg.analysis['plotConn'] = {'includePre': cfg.recordCellsSpikes, 'includePost': cfg.recordCellsSpikes, 'feature': 'convergence', \
+#    'synOrConn': 'conn', 'graphType': 'bar', 'saveFig': True, 'figSize': (15, 9)}
+
+# plot firing rate spectrogram  (run for 4 sec)
+# cfg.analysis['plotRateSpectrogram'] = {'include': ['allCells'], 'saveFig': True, 'figSize': (15, 7)}
+
+# plot granger causality (run for 4 sec)
+# cfg.analysis.granger = {'cells1': ['L2i'], 'cells2': ['L4e'], 'label1': 'L2i', 'label2': 'L4e', 'timeRange': [500,4000], 'saveFig': True, 'binSize': 4}
 

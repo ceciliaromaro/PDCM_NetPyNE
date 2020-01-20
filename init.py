@@ -44,4 +44,3 @@ sim.gatherData()                        # gather spiking data and cell info from
 sim.saveData()                          # save params, cell info and sim output to file (pickle,mat,txt,etc)#
 sim.analysis.plotData()               # plot spike raster etc
 
-
