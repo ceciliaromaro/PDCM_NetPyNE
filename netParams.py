@@ -23,7 +23,7 @@ def Reescale(ScaleFactor, C, N_Full, w_p, f_ext, tau_syn, Inp, InpDC):
 		F_out=np.array([0.860, 2.600, 4.306, 5.396, 8.142, 8.188, 0.941, 7.3]) #Good approximation
 		#F_out=array([0.971, 2.868, 4.746, 5.396, 8.142, 9.078, 0.991, 7.523])
 		
-		#Para a nao balanceada o F_out deve ser outro. O nao balanceado. Apos corrigir conexoes testar para caso so de aleracao no InpPoiss
+		#This F_out good approximation is for the Balanced option "True". For the option Balanced==False, It is possible to find out a better approximation.
 		Ncon=np.vstack(np.column_stack(0 for i in range(0,8)) for i in range(0,8))
 		for r in range(0,8): 
 			for c in range(0,8): 
@@ -39,8 +39,6 @@ def Reescale(ScaleFactor, C, N_Full, w_p, f_ext, tau_syn, Inp, InpDC):
 		I_ext = 0.001 * tau_syn * (
 		        (1. - np.sqrt(ScaleFactor)) * x1_sum + 
 		        (1. - np.sqrt(ScaleFactor)) * x1_ext)
-		#if ScaleFactor<0.09:  #Aqui adaptado
-		#	I_ext=1.2*I_ext #1.05 da ativo 1.4
 				        
 		#Inp=ScaleFactor*Inp*w_p*f_ext*tau_syn*0.001
 		InpDC=np.sqrt(ScaleFactor)*InpDC*w_p*f_ext*tau_syn*0.001 #pA
