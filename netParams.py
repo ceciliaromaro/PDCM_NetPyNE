@@ -18,12 +18,12 @@ from cfg import cfg
 
 # Reescaling function (move to separate module?)
 def Reescale(ScaleFactor, C, N_Full, w_p, f_ext, tau_syn, Inp, InpDC):
-	if ScaleFactor<1.0 : 
-		# 1
-		F_out=np.array([0.860, 2.600, 4.306, 5.396, 8.142, 8.188, 0.941, 7.3]) #Good approximation
-		#F_out=array([0.971, 2.868, 4.746, 5.396, 8.142, 9.078, 0.991, 7.523])
+	if ScaleFactor<1.0: 
+
+		# This is a good approximation of the F_out param for the Balanced option "True".
+		# Note for the Balanced=False option, it should be possible to calculate a better approximation.
+		F_out=np.array([0.860, 2.600, 4.306, 5.396, 8.142, 8.188, 0.941, 7.3]) 
 		
-		#This F_out good approximation is for the Balanced option "True". For the option Balanced==False, It is possible to find out a better approximation.
 		Ncon=np.vstack(np.column_stack(0 for i in range(0,8)) for i in range(0,8))
 		for r in range(0,8): 
 			for c in range(0,8): 
@@ -40,7 +40,6 @@ def Reescale(ScaleFactor, C, N_Full, w_p, f_ext, tau_syn, Inp, InpDC):
 		        (1. - np.sqrt(ScaleFactor)) * x1_sum + 
 		        (1. - np.sqrt(ScaleFactor)) * x1_ext)
 				        
-		#Inp=ScaleFactor*Inp*w_p*f_ext*tau_syn*0.001
 		InpDC=np.sqrt(ScaleFactor)*InpDC*w_p*f_ext*tau_syn*0.001 #pA
 		w_p=w_p/np.sqrt(ScaleFactor) #pA
 		InpDC=InpDC+I_ext
@@ -225,7 +224,7 @@ netParams.connParams['S2->M'] = {
 	'preConds': {'pop': 'bkg_IF'}, 
 	'postConds': {'cellModel': 'IntFire_PD'},
 	'probability': 1, 
-	'weight':0,	
+	'weight': 0,	
 	'delay': 0.5}   
 
 
@@ -242,6 +241,4 @@ cfg.analysis['plotRaster']['include'] = include
 scale = 10 #max(1,int(sum(N_[:8])/1000))
 include = [(pop, range(0, netParams.popParams[pop]['numCells'], scale)) for pop in L]
 cfg.analysis['plotSpikeStats']['include'] = include
-#cfg.analysis['plotSpikeStats']['include'].reverse()
-#cfg.analysis['plotSpikeStats']['legendLabels'].reverse()
 
