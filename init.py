@@ -9,6 +9,10 @@ to run on single core:
 	python init.py
 to run on multiple cores: 
 	mpiexec -n 2 nrniv -python -mpi init.py 
+
+cd PD_Netpyne/PD_DC-0_scale-05-10x 
+python init.py 1 &> output & disown
+
 '''
 
 import matplotlib; matplotlib.use('Agg')  # to avoid graphics error in servers
@@ -29,6 +33,8 @@ sim.initialize(
 sim.net.createPops()                    # instantiate network populations
 sim.net.createCells()                   # instantiate network cells based on defined populations
 
+
+
 # randomize m parameter of cells
 rand=h.Random()
 for c in sim.net.cells:
@@ -43,4 +49,6 @@ sim.runSim()                            # run parallel Neuron simulation
 sim.gatherData()                        # gather spiking data and cell info from each node
 sim.saveData()                          # save params, cell info and sim output to file (pickle,mat,txt,etc)#
 sim.analysis.plotData()               # plot spike raster etc
+
+
 
