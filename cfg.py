@@ -65,7 +65,7 @@ cfg.simLabel = 'pd_scale-%s_DC-%d_TH-%d_Balanced-%d_dur-%d_Seed-%d'%(str(cfg.Sca
 ###########################################################
 
 cfg.recordStep = 0.1         # Step size in ms to save data (e.g. V traces, LFP, etc)
-cfg.filename = cfg.simLabel  # Set file output name
+#cfg.filename = cfg.simLabel  # Set file output name
 cfg.saveFolder = 'data/'
 cfg.savePickle = True         # Save params, network and sim output to pickle file
 cfg.saveJson = False
