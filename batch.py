@@ -19,8 +19,8 @@ from cfg import cfg
 def custom():
     params = specs.ODict()
 
-    params[('seeds', 'stim')]  = list(range(1,2))
-    params[('seeds', 'm')]  = list(range(1,2))
+    params[('seeds', 'stim')]  = list(range(1,11))
+    params[('seeds', 'm')]  = list(range(1,11))
     
     groupedParams = [('seeds', 'stim'), ('seeds', 'm')] 
 
