@@ -19,8 +19,8 @@ from cfg import cfg
 def custom():
     params = specs.ODict()
 
-    params[('seeds', 'stim')]  = list(range(1,10))
-    params[('seeds', 'm')]  = list(range(1,10))
+    params[('seeds', 'stim')]  = list(range(1,2))
+    params[('seeds', 'm')]  = list(range(1,2))
     
     groupedParams = [('seeds', 'stim'), ('seeds', 'm')] 
 
@@ -81,7 +81,7 @@ def setRunCfg(b, type='mpi_bulletin'):
             'nodes': 1,
             'coresPerNode': 80,  # comet=24, bridges=28, gcp=32
             'email': 'salvadordura@gmail.com',
-            'folder': '/home/ext_salvadordura_gmail_com/A1_layers/',  # comet,gcp='/salvadord', bridges='/salvi82'
+            'folder': '/home/ext_salvadordura_gmail_com/potjans/',  # comet,gcp='/salvadord', bridges='/salvi82'
             'script': 'init.py',
             'mpiCommand': 'mpirun', # comet='ibrun', bridges,gcp='mpirun' 
             'nrnCommand': 'nrniv -mpi -python', #'python3',
