@@ -100,7 +100,7 @@ if __name__ == '__main__':
     b = custom()
 
 
-    b.batchLabel = cfg.simLabel
+    b.batchLabel = 'trials' #cfg.simLabel
     b.saveFolder = 'data/'+b.batchLabel
 
     setRunCfg(b, 'hpc_slurm_gcp') #'mpi_bulletin')

@@ -79,11 +79,11 @@ cfg.analysis['plotRaster']={'include': [], 'timeRange': [100,600], 'popRates' : 
 	'labels':'overlay', 'orderInverse': True, 'fontSize':16, 'showFig':False, 'saveFig': True, 'saveData':True}
 # raster plot (include update in netParams.py)
 '''
-cfg.analysis['plotRaster']={'include': [], 'timeRange': [100,cfg.duration], 'popRates' : False, 'figSize' : (6,7),  
-	'labels':'overlay', 'orderInverse': True, 'fontSize':16, 'showFig':False, 'saveFig': True, 'saveData':True}
+# cfg.analysis['plotRaster']={'include': [], 'timeRange': [100,cfg.duration], 'popRates' : False, 'figSize' : (6,7),  
+# 	'labels':'overlay', 'orderInverse': True, 'fontSize':16, 'showFig':False, 'saveFig': True, 'saveData':True}
 
 # statistics plot (include update in netParams.py)
-cfg.analysis['plotSpikeStats'] = {'include' : [], 'stats' : ['rate','isicv','sync'], 'legendLabels':['L6i', 'L6e', 'L5i', 'L5e', 'L4i', 'L4e','L2i', 'L2e'],
+cfg.analysis['plotSpikeStats'] = {'include' : [], 'stats' : ['rate','isicv'], 'legendLabels':['L6i', 'L6e', 'L5i', 'L5e', 'L4i', 'L4e','L2i', 'L2e'],
 	'timeRange' : [100,cfg.duration], 'fontSize': 16, 'figSize': (6,9),'showFig':False, 'saveFig': True, 'saveData':True}
 
 # plot traces
