@@ -19,8 +19,8 @@ from cfg import cfg
 def custom():
     params = specs.ODict()
 
-    params[('seeds', 'stim')]  = list(range(1,11))
-    params[('seeds', 'm')]  = list(range(1,11))
+    params[('seeds', 'stim')]  = list(range(1,3))#11))
+    params[('seeds', 'm')]  = list(range(1,3))#11))
     
     groupedParams = [('seeds', 'stim'), ('seeds', 'm')] 
 
@@ -100,7 +100,7 @@ if __name__ == '__main__':
     b = custom()
 
 
-    b.batchLabel = 'trials' #cfg.simLabel
+    b.batchLabel = 'trials_test' #cfg.simLabel
     b.saveFolder = 'data/'+b.batchLabel
 
     setRunCfg(b, 'hpc_slurm_gcp') #'mpi_bulletin')
