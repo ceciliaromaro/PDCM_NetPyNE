@@ -227,7 +227,7 @@ netParams.connParams['S2->M'] = {
 ############################################################
 # Update cfg plotting options based on network rescaling
 ############################################################
-
+'''
 # raster 10% of cells
 #scale = max(1,int(41.957*cfg.ScaleFactor))
 scale=1
@@ -239,5 +239,5 @@ include = [(pop, list(range(0, netParams.popParams[pop]['numCells'], scale))) fo
 scale=1
 include = [(pop, range(0, netParams.popParams[pop]['numCells'], scale)) for pop in L]
 cfg.analysis['plotSpikeStats']['include'] = include
-#cfg.analysis['plotRaster']['include'] = include
-
+cfg.analysis['plotRaster']['include'] = include
+'''

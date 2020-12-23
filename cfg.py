@@ -22,7 +22,7 @@ cfg = specs.SimConfig() # object of class SimConfig to store simulation configur
 
 #cfg.seeds['stim']=6
 cfg.seeds['stim'] = 0
-cfg.duration = 0.1 #60*1e3 #6*1e2   # Duration of the simulation, in ms
+cfg.duration = 60*1e3 #6*1e2   # Duration of the simulation, in ms
 cfg.dt = 0.025          # Internal integration timestep to use
 cfg.verbose = 0     # Show detailed messages
 #cfg.seeds['m'] = 123
@@ -48,7 +48,7 @@ cfg.createPyStruct = False      # save memory by not saving py data structure fo
 # DC=False ; TH=True;  Balanced=True   => Figure 10A. But I want a partial reproduce so I guess Figure 10C is not necessary
 
 # Size of Network. Adjust this constants, please!
-cfg.ScaleFactor = 0.1 #1.0 # 1.0 = 80.000 
+cfg.ScaleFactor = 1.0 #1.0 # 1.0 = 80.000 
 
 # External input DC or Poisson
 cfg.DC = False #True = DC // False = Poisson
@@ -84,7 +84,7 @@ cfg.analysis['plotRaster']={'include': [], 'timeRange': [100,600], 'popRates' : 
 # 	'labels':'overlay', 'orderInverse': True, 'fontSize':16, 'showFig':False, 'saveFig': True, 'saveData':True}
 
 # statistics plot (include update in netParams.py)
-cfg.analysis['plotSpikeStats'] = {'include' : [], 'stats' : ['rate','isicv'], 'legendLabels':['L6i', 'L6e', 'L5i', 'L5e', 'L4i', 'L4e','L2i', 'L2e'],
+cfg.analysis['plotSpikeStats'] = {'include' : cfg.recordCellsSpikes, 'stats' : ['rate','isicv'], 'legendLabels':['L6i', 'L6e', 'L5i', 'L5e', 'L4i', 'L4e','L2i', 'L2e'],
 	'timeRange' : [100,cfg.duration], 'fontSize': 16, 'figSize': (6,9),'showFig': False, 'saveFig': True, 'saveData': True}
 
 # plot traces
