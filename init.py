@@ -19,9 +19,8 @@ import matplotlib; matplotlib.use('Agg')  # to avoid graphics error in servers
 
 from netpyne import sim
 from neuron import h
-from cfg import cfg
-from netParams import netParams
 
+cfg, netParams = sim.readCmdLineArgs(simConfigDefault='cfg.py', netParamsDefault='netParams.py')
 
 ############################################################
 #               Create network and run simulation

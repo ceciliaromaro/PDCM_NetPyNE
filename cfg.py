@@ -7,6 +7,7 @@ cfg.py -- contains the simulation configuration (cfg object)
 
 from netpyne import specs
 
+
 ############################################################
 #
 #                    SIMULATION CONFIGURATION

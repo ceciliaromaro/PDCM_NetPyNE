@@ -7,8 +7,10 @@ netParams.py -- contains the network parameters (netParams object)
 
 from netpyne import specs
 import numpy as np
-from cfg import cfg
-
+try:
+	from __main__ import cfg  # import SimConfig object with params from parent module
+except:
+	from cfg import cfg
 
 ############################################################
 #
