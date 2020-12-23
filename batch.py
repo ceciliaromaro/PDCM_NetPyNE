@@ -99,7 +99,6 @@ if __name__ == '__main__':
     
     b = custom()
 
-
     b.batchLabel = 'trials_test' #cfg.simLabel
     b.saveFolder = 'data/'+b.batchLabel
 
