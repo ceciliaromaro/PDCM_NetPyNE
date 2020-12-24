@@ -33,7 +33,6 @@ sim.net.createPops()                    # instantiate network populations
 sim.net.createCells()                   # instantiate network cells based on defined populations
 
 
-
 # randomize m parameter of cells
 rand=h.Random()
 for c in sim.net.cells:
@@ -48,6 +47,4 @@ sim.runSim()                            # run parallel Neuron simulation
 sim.gatherData()                        # gather spiking data and cell info from each node
 sim.saveData()                          # save params, cell info and sim output to file (pickle,mat,txt,etc)#
 sim.analysis.plotData()               # plot spike raster etc
-
-
 
