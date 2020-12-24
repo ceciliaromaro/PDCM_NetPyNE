@@ -14,8 +14,10 @@ filenames = ['data/trials/trials_0_0.pkl',
 allpops = ['L2e', 'L2i', 'L4e', 'L4i', 'L5e', 'L5i','L6e', 'L6i']
 
 for filename in filenames:
-
-    sim.load(filename, instantiate=0)
+    try:
+        sim.load(filename, instantiate=0)
+    except:
+        pass
     sim.cfg.createNEURONObj=0
     sim.net.createCells()
     sim.analysis.plotSpikeStats(include=allpops, legendLabels=allpops, timeRange=[100, 60000], stats=['rate', 'isicv'], 
