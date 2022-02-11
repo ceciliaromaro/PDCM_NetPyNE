@@ -21,6 +21,8 @@ List of files:
 
 - `init.py`: File to run the simulation; also includes the function calls for creating the network, saving data and analyzing results.
 
+- `pd.sbatch` and `pd_128.sbatch` etc: Script files to run on HPCs via SLURM workload manager using different number of cores.
+
 - `IntFire_PD.mod`: NMODL file for he integrate and fire artificial cell used in this network.
 
 To run the multicompartment neuron version of the network use the files in the `/multicompartment` folder. The running instructions and file description is the same as above, except that you need to compile the `mod` folder via `nrnivmodl mod`. 
